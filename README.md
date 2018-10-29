@@ -1,9 +1,9 @@
 # HTTP Signature for Insomnia REST Client
-
 This is a plugin for the [Insomnia REST Client](https://insomnia.rest/)
 
-## How to use
+IETF Draft: https://tools.ietf.org/html/draft-cavage-http-signatures-10
 
+## How to use
 1. Set authentication type to `Bearer Token`
 2. Set Prefix value to Signature
 3. Set Token value to HTTP Signature template
