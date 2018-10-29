@@ -1,6 +1,6 @@
 {
   "name": "insomnia-plugin-http-signature",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "author": "Alessio Dionisi <hello@adns.io>",
   "description": "HTTP Signature for Insomnia REST Client",
   "repository": "github:adnsio/insomnia-plugin-http-signature",
@@ -11,8 +11,5 @@
   "insomnia": {
     "name": "http-signature",
     "description": "HTTP Signature"
-  },
-  "dependencies": {
-    "luxon": "^1.3.3"
   }
 }
