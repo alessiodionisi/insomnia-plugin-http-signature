@@ -1,5 +1,5 @@
 const crypto = require('crypto')
-const { parse: parseUrl } = require('url')
+const { URL } = require('url')
 
 module.exports.templateTags = [{
   name: 'httpsignature',
@@ -18,21 +18,23 @@ module.exports.templateTags = [{
   ],
 
   async run(context, keyId, privateKey) {
-    console.log(context)
     const request = await context.util.models.request.getById(context.meta.requestId)
     const requestUrl = await context.util.render(request.url)
 
     if (!keyId) throw new Error('missing keyId')
     if (!privateKey) throw new Error('missing privateKey')
 
-    const parsedUrl = parseUrl(requestUrl)
+    const parsedUrl = new URL(requestUrl)
+    for (const parameter of request.parameters) {
+      parsedUrl.searchParams.append(parameter.name, parameter.value)
+    }
 
     const algorithmBits = 256
     const signAlgorithm = `RSA-SHA${algorithmBits}`
 
     const signatureString = []
-    signatureString.push(`(request-target): ${request.method.toLowerCase()} ${parsedUrl.path}`)
-    signatureString.push(`host: ${parsedUrl.hostname}`)
+    signatureString.push(`(request-target): ${request.method.toLowerCase()} ${parsedUrl.pathname}${parsedUrl.search}`)
+    signatureString.push(`host: ${parsedUrl.host}`)
     const signature = signatureString.join('\n')
 
     const signatureSign = crypto.createSign(signAlgorithm)
