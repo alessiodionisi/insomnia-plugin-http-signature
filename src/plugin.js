@@ -26,7 +26,7 @@ module.exports.templateTags = [{
 
     const parsedUrl = new URL(requestUrl)
     for (const parameter of request.parameters) {
-      parsedUrl.searchParams.append(parameter.name, parameter.value)
+      if (!parameter.disabled) parsedUrl.searchParams.append(parameter.name, parameter.value)
     }
 
     const algorithmBits = 256
