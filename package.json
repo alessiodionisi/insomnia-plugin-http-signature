@@ -1,15 +1,16 @@
 {
   "name": "insomnia-plugin-http-signature",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Alessio Dionisi <hello@adns.io>",
   "description": "HTTP Signature for Insomnia REST Client",
   "repository": "github:adnsio/insomnia-plugin-http-signature",
-  "bugs": "https://github.com/adnsio/insomnia-plugin-http-signature/issues",
-  "homepage": "https://github.com/adnsio/insomnia-plugin-http-signature#readme",
   "license": "MIT",
-  "main": "./src/plugin.js",
+  "main": "plugin.js",
   "insomnia": {
-    "name": "http-signature",
-    "description": "HTTP Signature"
+    "name": "httpsignature",
+    "description": "HTTP Signature for Insomnia REST Client"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
   }
 }
